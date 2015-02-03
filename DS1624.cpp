@@ -47,6 +47,7 @@ float DS1624::getTemp()
   }
   temp2 = templsb >> 3;
   temperature = (float(tempmsb) + (float(temp2) * 0.03125));
+  if( temperature > 127 ){ temperature -= 256; }
   Wire.endTransmission();
   return temperature;
 }
